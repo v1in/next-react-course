@@ -24,8 +24,8 @@ const DUMMY_DATA = [
 function AllMeetupsPage() {
     return (
         <section>
-            <h1>All Meetups</h1>
-            <ul>
+            <h1 style={{ textAlign: 'center' }}>All Meetups</h1>
+            <ul style={{ padding: '0 5%' }}>
                 <MeetupList meetups={DUMMY_DATA} />
             </ul>
         </section>

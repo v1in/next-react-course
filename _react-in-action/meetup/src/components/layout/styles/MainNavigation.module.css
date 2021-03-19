@@ -1,17 +1,25 @@
 .header {
   width: 100%;
-  height: 5rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  flex-wrap: wrap;
   background-color: #77002e;
-  padding: 0 10%;
+  padding: 5%;
+}
+
+@media (min-width: 1024px) {
+  .header {
+    padding: 5% 10%;
+    justify-content: space-between;
+  }
 }
 
 .logo {
   font-size: 2rem;
   color: white;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .header ul {
@@ -19,6 +27,7 @@
   margin: 0;
   padding: 0;
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
 }
 
