@@ -3,7 +3,7 @@ import { useRef } from "react";
 import Card from "../ui/Card";
 import classes from "./styles/NewMeetupForm.module.css";
 
-const NewMeetupForm = (props) => {
+export default function NewMeetupForm(props) {
   const titleInputRef = useRef();
   const imageInputRef = useRef();
   const addressInputRef = useRef();
@@ -52,6 +52,4 @@ const NewMeetupForm = (props) => {
       </form>
     </Card>
   );
-};
-
-export default NewMeetupForm;
+}

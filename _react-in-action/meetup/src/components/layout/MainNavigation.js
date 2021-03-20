@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import classes from "./styles/MainNavigation.module.css";
 
-const MainNavigation = () => {
+export default function MainNavigation() {
   return (
     <header className={classes.header}>
       <div className={classes.logo}>React Meetups</div>
@@ -21,6 +21,4 @@ const MainNavigation = () => {
       </nav>
     </header>
   );
-};
-
-export default MainNavigation;
+}

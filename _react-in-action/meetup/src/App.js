@@ -5,7 +5,7 @@ import NewMeetupPage from "./pages/NewMeetup";
 import FavoritesPage from "./pages/Favorites";
 import Layout from "./components/layout/Layout";
 
-const App = () => {
+export default function App() {
   return (
     <Layout>
       <Switch>
@@ -22,5 +22,3 @@ const App = () => {
     </Layout>
   );
 }
-
-export default App;

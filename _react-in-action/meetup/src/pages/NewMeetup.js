@@ -2,7 +2,7 @@ import { useHistory } from "react-router-dom";
 
 import NewMeetupForm from "../components/meetups/NewMeetupForm";
 
-const NewMeetupPage = () => {
+export default function NewMeetupPage() {
   const history = useHistory();
   const addMeetupHandler = (meetupData) => {
     fetch(`${process.env.REACT_APP_MEETUPS_API_URL}`, {
@@ -22,6 +22,4 @@ const NewMeetupPage = () => {
       <NewMeetupForm onAddMeetup={addMeetupHandler} />
     </section>
   );
-};
-
-export default NewMeetupPage;
+}
