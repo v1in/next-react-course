@@ -5,7 +5,7 @@ import NewMeetupPage from "./pages/NewMeetup";
 import FavoritesPage from "./pages/Favorites";
 import Layout from "./components/layout/Layout";
 
-function App() {
+const App = () => {
   return (
     <Layout>
       <Switch>

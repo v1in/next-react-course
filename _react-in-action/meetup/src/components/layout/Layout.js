@@ -1,7 +1,7 @@
 import MainNavigation from "./MainNavigation";
 import classes from './styles/Layout.module.css';
 
-function Layout(props) {
+const Layout = (props) => {
     return (
         <>
             <MainNavigation />
