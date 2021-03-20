@@ -1,7 +1,7 @@
 import Card from '../ui/Card';
 import classes from './styles/MeetupItem.module.css';
 
-function MeetupItem(props) {
+const MeetupItem = (props) => {
     return (
         <li className={classes.item}>
             <Card>
