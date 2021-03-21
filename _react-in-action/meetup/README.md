@@ -1,6 +1,6 @@
 # React Meetups
 
-#### Demo - [react-meetups.vercel.app](https://react-meetups.vercel.app/)
+#### Demo - [react-meetups.netlify.app](https://react-meetups.netlify.app/)
 
 ## Used in project: 
 - React
