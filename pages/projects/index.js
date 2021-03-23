@@ -1,6 +1,6 @@
 import Logo from "../logo/logo";
 
-export default function ProjectsPage() {
+export default function Projects() {
   return (
     <div>
       <Logo />
