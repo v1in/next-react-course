@@ -17,6 +17,11 @@ export default function HomePage() {
             <a>About</a>
           </Link>
         </li>
+        <li>
+          <Link href="/clients">
+            <a>Clients</a>
+          </Link>
+        </li>
       </ul>
     </div>
   );
