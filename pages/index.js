@@ -20,6 +20,13 @@ export default function HomePage() {
           <Link href="/blog/some-blog-post">Blog</Link>
         </li>
       </ul>
+      <hr />
+      <hr />
+      <ul>
+        <li>
+          <Link href="/events">Events</Link>
+        </li>
+      </ul>
     </div>
   );
 }
