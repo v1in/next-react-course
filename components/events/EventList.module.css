@@ -1,0 +1,12 @@
+.list {
+  width: 100%;
+  max-width: 40rem;
+  margin: 5rem auto;
+  padding: 0;
+}
+
+@media (min-width: 768px) {
+  .list {
+    width: 90%;
+  }
+}

@@ -1,9 +1,13 @@
-import styles from "../../styles/events.module.css";
+import { getFeaturedEvents } from "../../dummy-data";
+import EventList from "../../components/events/EventList";
 
 export default function AllEventsPage() {
+  const featuredEvents = getFeaturedEvents();
+
   return (
-    <div className={styles.container}>
+    <div>
       <h1>All Events</h1>
+      <EventList items={featuredEvents} />
     </div>
   );
 }
