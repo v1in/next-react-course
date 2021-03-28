@@ -32,6 +32,10 @@ h6 {
   font-family: "Lato", sans-serif;
 }
 
+h1 {
+  text-align: center;
+}
+
 #__next {
   height: 100%;
   width: 100%;

@@ -3,10 +3,16 @@ import Image from "next/image";
 
 export default function Logo() {
   return (
-    <Link href="/">
-      <a>
-        <Image src="/vercel.svg" alt="Logo" width={100} height={100} />
-      </a>
-    </Link>
+    <div className="logo">
+      <Link href="/">
+        <Image src="/vercel.svg" alt="Logo" width={100} height={70} />
+      </Link>
+      <style jsx>{`
+        .logo {
+          display: flex;
+          justify-content: center;
+        }
+      `}</style>
+    </div>
   );
 }
