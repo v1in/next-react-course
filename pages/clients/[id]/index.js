@@ -1,6 +1,10 @@
 import Logo from "../../logo/logo";
+import { useRouter } from "next/router";
 
 export default function ClientProjectsPage() {
+  const router = useRouter();
+  console.log(router.query);
+
   return (
     <div>
       <Logo />
