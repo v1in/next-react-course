@@ -1,7 +1,9 @@
+import Layout from "../../components/layout/layout";
+
 export default function FilteredEventsPage() {
   return (
-    <div>
+    <Layout>
       <h1>Filtered Events</h1>
-    </div>
+    </Layout>
   );
 }

@@ -1,15 +1,14 @@
 import { getFeaturedEvents } from "../../dummy-data";
 import EventList from "../../components/events/EventList";
-import Logo from "../logo/logo";
+import Layout from "../../components/layout/layout"; // For example, added for all events pages
 
 export default function AllEventsPage() {
   const featuredEvents = getFeaturedEvents();
 
   return (
-    <div>
-      <Logo />
+    <Layout>
       <h1>All Events</h1>
       <EventList items={featuredEvents} />
-    </div>
+    </Layout>
   );
 }
