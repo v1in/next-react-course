@@ -5,6 +5,7 @@ import EventSummary from "../../components/event-detail/EventSummary";
 import EventLogistics from "../../components/event-detail/EventLogistics";
 import EventContent from "../../components/event-detail/EventContent";
 import Layout from "../../components/layout/Layout";
+import ErrorAlert from "../../components/ui/ErrorAlert";
 
 export default function EventDetailPage() {
   const router = useRouter();
@@ -13,7 +14,13 @@ export default function EventDetailPage() {
   const event = getEventById(eventId);
 
   if (!event) {
-    return <p>No event found!</p>;
+    return (
+      <Layout>
+        <ErrorAlert>
+          <p className="center">No event found!</p>
+        </ErrorAlert>
+      </Layout>
+    );
   }
 
   return (
