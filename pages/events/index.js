@@ -1,15 +1,25 @@
-import { getFeaturedEvents } from "../../dummy-data";
+import { useRouter } from "next/router";
+
+import { getAllEvents } from "../../dummy-data";
 import EventList from "../../components/events/EventList";
-import Logo from "../logo/logo";
+import EventsSearch from "../../components/events/EventsSearch";
+import MainLayout from "../../components/layout/MainLayout";
 
 export default function AllEventsPage() {
-  const featuredEvents = getFeaturedEvents();
+  const router = useRouter();
+  const events = getAllEvents();
+
+  function findEventsHandler(year, month) {
+    const fullPath = `/events/${year}/${month}`;
+
+    router.push(fullPath);
+  }
 
   return (
-    <div>
-      <Logo />
+    <MainLayout>
       <h1>All Events</h1>
-      <EventList items={featuredEvents} />
-    </div>
+      <EventsSearch onSearch={findEventsHandler} />
+      <EventList items={events} />
+    </MainLayout>
   );
 }

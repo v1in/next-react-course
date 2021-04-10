@@ -3,6 +3,7 @@
   max-width: 40rem;
   margin: 5rem auto;
   padding: 0;
+  padding-bottom: 5rem;
 }
 
 @media (min-width: 768px) {

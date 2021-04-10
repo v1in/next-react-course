@@ -1,7 +1,40 @@
+import { useRouter } from "next/router";
+
+import { getEventById } from "../../dummy-data";
+import EventSummary from "../../components/event-detail/EventSummary";
+import EventLogistics from "../../components/event-detail/EventLogistics";
+import EventContent from "../../components/event-detail/EventContent";
+import ErrorAlert from "../../components/ui/ErrorAlert";
+import MainLayout from "../../components/layout/MainLayout";
+
 export default function EventDetailPage() {
+  const router = useRouter();
+
+  const eventId = router.query.eventId;
+  const event = getEventById(eventId);
+
+  if (!event) {
+    return (
+      <MainLayout>
+        <ErrorAlert>
+          <p className="center">No event found!</p>
+        </ErrorAlert>
+      </MainLayout>
+    );
+  }
+
   return (
-    <div>
-      <h1>Event Detail</h1>
-    </div>
+    <MainLayout>
+      <EventSummary title={event.title} />
+      <EventLogistics
+        date={event.date}
+        address={event.location}
+        image={event.image}
+        imageAlt={event.title}
+      />
+      <EventContent>
+        <p>{event.description}</p>
+      </EventContent>
+    </MainLayout>
   );
 }
