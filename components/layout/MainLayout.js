@@ -1,6 +1,6 @@
 import MainHeader from "./MainHeader";
 
-export default function Layout(props) {
+export default function MainLayout(props) {
   return (
     <>
       <MainHeader />
