@@ -1,4 +1,4 @@
-import classes from "./event-summary.module.css";
+import classes from "./EventSummary.module.css";
 
 export default function EventSummary(props) {
   const { title } = props;

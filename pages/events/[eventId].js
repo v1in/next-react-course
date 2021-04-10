@@ -1,10 +1,10 @@
 import { useRouter } from "next/router";
 
 import { getEventById } from "../../dummy-data";
-import EventSummary from "../../components/event-detail/event-summary";
-import EventLogistics from "../../components/event-detail/event-logistics";
-import EventContent from "../../components/event-detail/event-content";
-import Layout from "../../components/layout/layout";
+import EventSummary from "../../components/event-detail/EventSummary";
+import EventLogistics from "../../components/event-detail/EventLogistics";
+import EventContent from "../../components/event-detail/EventContent";
+import Layout from "../../components/layout/Layout";
 
 export default function EventDetailPage() {
   const router = useRouter();
