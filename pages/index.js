@@ -27,6 +27,13 @@ export default function HomePage() {
           <Link href="/events">Events</Link>
         </li>
       </ul>
+      <hr />
+      <hr />
+      <ul>
+        <li>
+          <Link href="/pre-rendering">Pre-rendering</Link>
+        </li>
+      </ul>
     </div>
   );
 }
