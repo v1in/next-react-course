@@ -35,6 +35,10 @@ export default function HomePage() {
         <li>
           <Link href="/pre-rendering/user">getServerSideProps</Link>
         </li>
+        <hr />
+        <li>
+          <Link href="/pre-rendering/sales">Sales</Link>
+        </li>
       </ul>
     </div>
   );
