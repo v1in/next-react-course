@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import useSWR from "swr";
 
-export default function LastSalesPage() {
-  const [sales, setSales] = useState();
+export default function LastSalesPage(props) {
+  const [sales, setSales] = useState(props.sales);
   // const [isLoading, setIsLoading] = useState(false);
 
   const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_SALES_API_URL}`);
@@ -48,7 +48,7 @@ export default function LastSalesPage() {
     return <p>Failed to load.</p>;
   }
 
-  if (!data || !sales) {
+  if (!data && !sales) {
     return <p>Loading...</p>;
   }
 
@@ -61,4 +61,23 @@ export default function LastSalesPage() {
       ))}
     </ul>
   );
+}
+
+export async function getStaticProps() {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_SALES_API_URL}`);
+  const data = await response.json();
+
+  const transformedSales = [];
+  // transform our 'object' from Firebase
+  for (const key in data) {
+    transformedSales.push({
+      id: key,
+      username: data[key].username,
+      volume: data[key].volume,
+    });
+  }
+
+  return {
+    props: { sales: transformedSales },
+  };
 }
