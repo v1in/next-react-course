@@ -1,36 +1,55 @@
 import { useEffect, useState } from "react";
+import useSWR from "swr";
 
 export default function LastSalesPage() {
   const [sales, setSales] = useState();
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
+
+  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_SALES_API_URL}`);
 
   useEffect(() => {
-    setIsLoading(true);
-    fetch(`${process.env.NEXT_PUBLIC_SALES_API_URL}`).then((response) =>
-      response.json().then((data) => {
-        const transformedSales = [];
+    if (data) {
+      const transformedSales = [];
+      // transform our 'object' from Firebase
+      for (const key in data) {
+        transformedSales.push({
+          id: key,
+          username: data[key].username,
+          volume: data[key].volume,
+        });
+      }
 
-        // transform our 'object' from Firebase
-        for (const key in data) {
-          transformedSales.push({
-            id: key,
-            username: data[key].username,
-            volume: data[key].volume,
-          });
-        }
+      setSales(transformedSales);
+    }
+  }, [data]);
 
-        setSales(transformedSales);
-        setIsLoading(false);
-      })
-    );
-  }, []);
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   fetch(`${process.env.NEXT_PUBLIC_SALES_API_URL}`).then((response) =>
+  //     response.json().then((data) => {
+  //       const transformedSales = [];
 
-  if (isLoading) {
-    return <p>Loading...</p>;
+  //       // transform our 'object' from Firebase
+  //       for (const key in data) {
+  //         transformedSales.push({
+  //           id: key,
+  //           username: data[key].username,
+  //           volume: data[key].volume,
+  //         });
+  //       }
+
+  //       setSales(transformedSales);
+  //       setIsLoading(false);
+  //     })
+  //   );
+  // }, []);
+
+  if (error) {
+    return <p>Failed to load.</p>;
   }
 
-  if (!sales) {
-    return <p>No data yet</p>;
+  if (!data || !sales) {
+    return <p>Loading...</p>;
   }
 
   return (
