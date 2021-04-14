@@ -21,17 +21,19 @@ export default function HomePage() {
         </li>
       </ul>
       <hr />
-      <hr />
       <ul>
         <li>
           <Link href="/events">Events</Link>
         </li>
       </ul>
       <hr />
-      <hr />
       <ul>
+        <b>Static Generation:</b>
         <li>
-          <Link href="/pre-rendering">Pre-rendering</Link>
+          <Link href="/pre-rendering">getStaticProps</Link>
+        </li>
+        <li>
+          <Link href="/pre-rendering/user">getServerSideProps</Link>
         </li>
       </ul>
     </div>
