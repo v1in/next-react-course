@@ -1,55 +1,40 @@
-import { getFilteredEvents } from "../../helpers/utils";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import useSWR from "swr";
+
 import EventList from "../../components/events/EventList";
 import ResultsTitle from "../../components/events/ResultsTitle";
 import Button from "../../components/ui/Button";
 import ErrorAlert from "../../components/ui/ErrorAlert";
 import MainLayout from "../../components/layout/MainLayout";
 
-export default function FilteredEventsPage(props) {
-  if (props.hasError) {
-    return (
-      <MainLayout>
-        <div className="center">
-          <ErrorAlert>
-            <p>Invalid filter. Please adjust your values!</p>
-          </ErrorAlert>
-          <Button link="/events">Show All Events</Button>
-        </div>
-      </MainLayout>
-    );
-  }
+export default function FilteredEventsPage() {
+  const router = useRouter();
 
-  const filteredEvents = props.events;
+  const [loadedEvents, setLoadedEvents] = useState();
 
-  if (!filteredEvents || filteredEvents.length === 0) {
-    return (
-      <MainLayout>
-        <div className="center">
-          <ErrorAlert>
-            <p>No events found for the chosen filter!</p>
-          </ErrorAlert>
-          <Button link="/events">Show All Events</Button>
-        </div>
-      </MainLayout>
-    );
-  }
+  const filterData = router.query.slug;
 
-  const date = new Date(props.date.year, props.date.month - 1);
-
-  return (
-    <MainLayout>
-      <ResultsTitle date={date} />
-      <EventList items={filteredEvents} />
-    </MainLayout>
+  const { data, error } = useSWR(
+    "https://va-projects-e8ec7-default-rtdb.firebaseio.com/events.json"
   );
-}
 
-export async function getServerSideProps(context) {
-  const { params } = context;
+  useEffect(() => {
+    if (data) {
+      const events = [];
 
-  const filterData = params.slug;
+      for (const key in data) {
+        events.push({
+          id: key,
+          ...data[key],
+        });
+      }
 
-  if (!filterData) {
+      setLoadedEvents(events);
+    }
+  }, [data]);
+
+  if (!loadedEvents) {
     return (
       <MainLayout>
         <p className="center">Loading...</p>
@@ -69,26 +54,48 @@ export async function getServerSideProps(context) {
     numYear > 2030 ||
     numYear < 2021 ||
     numMonth < 1 ||
-    numMonth > 12
+    numMonth > 12 ||
+    error
   ) {
-    return {
-      props: { hasError: true },
-      notFound: true,
-    };
+    return (
+      <MainLayout>
+        <div className="center">
+          <ErrorAlert>
+            <p>Invalid filter. Please adjust your values!</p>
+          </ErrorAlert>
+          <Button link="/events">Show All Events</Button>
+        </div>
+      </MainLayout>
+    );
   }
 
-  const filteredEvents = await getFilteredEvents({
-    year: numYear,
-    month: numMonth,
+  const filteredEvents = loadedEvents.filter((event) => {
+    const eventDate = new Date(event.date);
+    return (
+      eventDate.getFullYear() === numYear &&
+      eventDate.getMonth() === numMonth - 1
+    );
   });
 
-  return {
-    props: {
-      events: filteredEvents,
-      date: {
-        year: numYear,
-        month: numMonth,
-      },
-    },
-  };
+  if (!filteredEvents || filteredEvents.length === 0) {
+    return (
+      <MainLayout>
+        <div className="center">
+          <ErrorAlert>
+            <p>No events found for the chosen filter!</p>
+          </ErrorAlert>
+          <Button link="/events">Show All Events</Button>
+        </div>
+      </MainLayout>
+    );
+  }
+
+  const date = new Date(numYear, numMonth - 1);
+
+  return (
+    <MainLayout>
+      <ResultsTitle date={date} />
+      <EventList items={filteredEvents} />
+    </MainLayout>
+  );
 }
