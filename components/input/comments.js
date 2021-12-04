@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import CommentList from "./comment-list";
 import NewComment from "./new-comment";
-import classes from "./comments.module.css";
+import classes from "./styles/comments.module.css";
 
 function Comments(props) {
   const { eventId } = props;

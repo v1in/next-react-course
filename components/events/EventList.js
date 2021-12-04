@@ -1,6 +1,6 @@
 import EventItem from "./EventItem";
 
-import classes from "./EventList.module.css";
+import classes from "./styles/EventList.module.css";
 
 export default function EventList(props) {
   const { items } = props;

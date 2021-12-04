@@ -1,7 +1,7 @@
 import AddressIcon from "../icons/AddressIcon";
 import DateIcon from "../icons/DateIcon";
 import LogisticsItem from "./LogisticsItem";
-import classes from "./EventLogistics.module.css";
+import classes from "./styles/EventLogistics.module.css";
 
 export default function EventLogistics(props) {
   const { date, address, image, imageAlt } = props;

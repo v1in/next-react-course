@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import classes from "./newsletter-registration.module.css";
+import classes from "./styles/newsletter-registration.module.css";
 
 function NewsletterRegistration() {
   const emailInputRef = useRef();
