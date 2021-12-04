@@ -4,7 +4,7 @@ export default function MainLayout(props) {
   return (
     <>
       <MainHeader />
-      <main>{props.children}</main>
+      <main style={{paddingBottom: '5rem'}}>{props.children}</main>
     </>
   );
 }
