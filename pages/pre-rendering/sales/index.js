@@ -72,8 +72,8 @@ export async function getStaticProps() {
   for (const key in data) {
     transformedSales.push({
       id: key,
-      username: data[key].username,
-      volume: data[key].volume,
+      username: data[key].username || null,
+      volume: data[key].volume || null,
     });
   }
 

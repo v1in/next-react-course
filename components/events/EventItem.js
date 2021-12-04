@@ -8,7 +8,7 @@ import classes from "./EventItem.module.css";
 export default function EventItem(props) {
   const { title, image, date, location, id } = props;
 
-  const humanReadableDate = new Date(date).toLocaleDateString("es-US", {
+  const humanReadableDate = new Date(date).toLocaleDateString("us-US", {
     day: "numeric",
     month: "long",
     year: "numeric",

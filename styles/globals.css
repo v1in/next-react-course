@@ -50,3 +50,7 @@ img {
 .center {
   text-align: center;
 }
+
+section {
+  padding: 0 30px;
+}
