@@ -3,18 +3,18 @@ import DateIcon from "../icons/DateIcon";
 import AddressIcon from "../icons/AddressIcon";
 import ArrowRightIcon from "../icons/ArrowRightIcon";
 
-import classes from "./EventItem.module.css";
+import classes from "./styles/EventItem.module.css";
 
 export default function EventItem(props) {
   const { title, image, date, location, id } = props;
 
-  const humanReadableDate = new Date(date).toLocaleDateString("es-US", {
+  const humanReadableDate = new Date(date).toLocaleDateString("us-US", {
     day: "numeric",
     month: "long",
     year: "numeric",
   });
 
-  const formattedAddress = location.replace(", ", "\n");
+  const formattedAddress = location?.replace(", ", "\n");
   const exploreLink = `/events/${id}`;
 
   return (

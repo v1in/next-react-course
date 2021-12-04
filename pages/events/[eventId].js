@@ -4,6 +4,7 @@ import EventLogistics from "../../components/event-detail/EventLogistics";
 import EventContent from "../../components/event-detail/EventContent";
 import ErrorAlert from "../../components/ui/ErrorAlert";
 import MainLayout from "../../components/layout/MainLayout";
+import Comments from '../../components/input/comments';
 
 export default function EventDetailPage(props) {
   const event = props.selectedEvent;
@@ -30,6 +31,7 @@ export default function EventDetailPage(props) {
       <EventContent>
         <p>{event.description}</p>
       </EventContent>
+      <Comments eventId={event.id} />
     </MainLayout>
   );
 }

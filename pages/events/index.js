@@ -4,6 +4,7 @@ import EventList from "../../components/events/EventList";
 import EventsSearch from "../../components/events/EventsSearch";
 import MainLayout from "../../components/layout/MainLayout";
 import { getAllEvents } from "../../helpers/utils";
+import NewsletterRegistration from '../../components/input/newsletter-registration';
 
 export default function AllEventsPage(props) {
   const router = useRouter();
@@ -18,6 +19,7 @@ export default function AllEventsPage(props) {
     <MainLayout>
       <h1>All Events</h1>
       <EventsSearch onSearch={findEventsHandler} />
+      <NewsletterRegistration />
       <EventList items={props.events} />
     </MainLayout>
   );

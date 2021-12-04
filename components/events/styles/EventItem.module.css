@@ -9,6 +9,10 @@
   gap: 1rem;
 }
 
+.item img {
+  object-fit: cover;
+}
+
 .content {
   width: 100%;
   padding: 0 1rem;
@@ -41,7 +45,6 @@
 .content address {
   margin: 0.5rem 0;
   color: #666666;
-  white-space: pre;
 }
 
 .actions {
