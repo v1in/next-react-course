@@ -33,6 +33,8 @@ function NewComment(props) {
       name: enteredName,
       text: enteredComment,
     });
+
+    event.target.reset();
   }
 
   return (
