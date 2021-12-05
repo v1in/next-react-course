@@ -1,5 +1,5 @@
 const EVENTS_URL =
-  "https://va-projects-e8ec7-default-rtdb.firebaseio.com/events.json";
+  'https://va-projects-e8ec7-default-rtdb.firebaseio.com/events.json';
 
 export async function getAllEvents() {
   const response = await fetch(EVENTS_URL);

@@ -1,7 +1,7 @@
-import classes from "./styles/EventSummary.module.css";
+import classes from './styles/EventSummary.module.css';
 
 export default function EventSummary(props) {
-  const { title } = props;
+  const {title} = props;
 
   return (
     <section className={classes.summary}>

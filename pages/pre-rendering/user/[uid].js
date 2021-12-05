@@ -3,12 +3,12 @@ export default function UserIdPage(props) {
 }
 
 export async function getServerSideProps(context) {
-  const { params } = context;
+  const {params} = context;
   const userId = params.uid;
 
   return {
     props: {
-      id: "userid-" + userId,
+      id: 'userid-' + userId,
     },
   };
 }

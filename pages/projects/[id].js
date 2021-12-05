@@ -1,6 +1,6 @@
-import { useRouter } from "next/router";
+import {useRouter} from 'next/router';
 
-import Logo from "../logo/logo";
+import Logo from '../logo/logo';
 
 export default function ProjectPage() {
   const router = useRouter();

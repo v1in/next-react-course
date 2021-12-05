@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import useSWR from "swr";
+import {useEffect, useState} from 'react';
+import useSWR from 'swr';
 
 export default function LastSalesPage(props) {
   const [sales, setSales] = useState(props.sales);
   // const [isLoading, setIsLoading] = useState(false);
 
-  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_SALES_API_URL}`);
+  const {data, error} = useSWR(`${process.env.NEXT_PUBLIC_SALES_API_URL}`);
 
   useEffect(() => {
     if (data) {
@@ -78,6 +78,6 @@ export async function getStaticProps() {
   }
 
   return {
-    props: { sales: transformedSales },
+    props: {sales: transformedSales},
   };
 }

@@ -1,7 +1,7 @@
-import classes from "./styles/LogisticsItem.module.css";
+import classes from './styles/LogisticsItem.module.css';
 
 export default function LogisticsItem(props) {
-  const { icon: Icon } = props;
+  const {icon: Icon} = props;
 
   return (
     <li className={classes.item}>

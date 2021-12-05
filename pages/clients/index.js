@@ -1,10 +1,10 @@
-import Link from "next/link";
-import Logo from "../logo/logo";
+import Link from 'next/link';
+import Logo from '../logo/logo';
 
 export default function ClientPage() {
   const clients = [
-    { id: "will", name: "William" },
-    { id: "joss", name: "Joshua" },
+    {id: 'will', name: 'William'},
+    {id: 'joss', name: 'Joshua'},
   ];
   return (
     <div>

@@ -1,9 +1,9 @@
-import EventItem from "./EventItem";
+import EventItem from './EventItem';
 
-import classes from "./styles/EventList.module.css";
+import classes from './styles/EventList.module.css';
 
 export default function EventList(props) {
-  const { items } = props;
+  const {items} = props;
 
   return (
     <ul className={classes.list}>

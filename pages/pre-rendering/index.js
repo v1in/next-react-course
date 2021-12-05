@@ -1,9 +1,9 @@
-import path from "path";
-import fs from "fs/promises";
-import Link from "next/link";
+import path from 'path';
+import fs from 'fs/promises';
+import Link from 'next/link';
 
 function PreRendering(props) {
-  const { products } = props;
+  const {products} = props;
   return (
     <ul>
       {products.map((product) => (
@@ -16,21 +16,21 @@ function PreRendering(props) {
 }
 
 export async function getStaticProps(context) {
-  console.log("(Re-)Generating...");
-  const filePath = path.join(process.cwd(), "data", "dummy-backend.json");
+  console.log('(Re-)Generating...');
+  const filePath = path.join(process.cwd(), 'data', 'dummy-backend.json');
   const jsonData = await fs.readFile(filePath);
   const data = JSON.parse(jsonData);
 
   if (!data) {
     return {
       redirect: {
-        destination: "/no-data",
+        destination: '/no-data',
       },
     };
   }
 
   if (data.products.length === 0) {
-    return { notFound: true };
+    return {notFound: true};
   }
 
   return {

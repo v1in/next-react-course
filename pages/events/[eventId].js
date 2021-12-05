@@ -1,9 +1,9 @@
-import { getEventById, getFeaturedEvents } from "../../helpers/utils";
-import EventSummary from "../../components/event-detail/EventSummary";
-import EventLogistics from "../../components/event-detail/EventLogistics";
-import EventContent from "../../components/event-detail/EventContent";
-import ErrorAlert from "../../components/ui/ErrorAlert";
-import MainLayout from "../../components/layout/MainLayout";
+import {getEventById, getFeaturedEvents} from '../../helpers/utils';
+import EventSummary from '../../components/event-detail/EventSummary';
+import EventLogistics from '../../components/event-detail/EventLogistics';
+import EventContent from '../../components/event-detail/EventContent';
+import ErrorAlert from '../../components/ui/ErrorAlert';
+import MainLayout from '../../components/layout/MainLayout';
 import Comments from '../../components/input/comments';
 
 export default function EventDetailPage(props) {
@@ -13,7 +13,7 @@ export default function EventDetailPage(props) {
     return (
       <MainLayout>
         <ErrorAlert>
-          <p className="center">No event found!</p>
+          <p className='center'>No event found!</p>
         </ErrorAlert>
       </MainLayout>
     );
@@ -51,7 +51,7 @@ export async function getStaticProps(context) {
 export async function getStaticPaths() {
   const events = await getFeaturedEvents();
 
-  const paths = events.map((event) => ({ params: { eventId: event.id } }));
+  const paths = events.map((event) => ({params: {eventId: event.id}}));
 
   return {
     paths: paths,
