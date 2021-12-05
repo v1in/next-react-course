@@ -1,7 +1,7 @@
-import classes from "./styles/comment-list.module.css";
+import classes from './styles/comment-list.module.css';
 
 function CommentList(props) {
-  const { items } = props;
+  const {items} = props;
 
   return (
     <ul className={classes.comments}>

@@ -65,3 +65,10 @@
     align-items: flex-start;
   }
 }
+
+@media (max-width: 420px) {
+  .image {
+    width: 8rem;
+    height: 8rem;
+  }
+}

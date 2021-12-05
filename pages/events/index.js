@@ -1,9 +1,9 @@
-import { useRouter } from "next/router";
+import {useRouter} from 'next/router';
 
-import EventList from "../../components/events/EventList";
-import EventsSearch from "../../components/events/EventsSearch";
-import MainLayout from "../../components/layout/MainLayout";
-import { getAllEvents } from "../../helpers/utils";
+import EventList from '../../components/events/EventList';
+import EventsSearch from '../../components/events/EventsSearch';
+import MainLayout from '../../components/layout/MainLayout';
+import {getAllEvents} from '../../helpers/utils';
 import NewsletterRegistration from '../../components/input/newsletter-registration';
 
 export default function AllEventsPage(props) {

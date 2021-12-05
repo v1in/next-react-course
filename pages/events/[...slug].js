@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import useSWR from "swr";
+import {useEffect, useState} from 'react';
+import {useRouter} from 'next/router';
+import useSWR from 'swr';
 
-import EventList from "../../components/events/EventList";
-import ResultsTitle from "../../components/events/ResultsTitle";
-import Button from "../../components/ui/Button";
-import ErrorAlert from "../../components/ui/ErrorAlert";
-import MainLayout from "../../components/layout/MainLayout";
+import EventList from '../../components/events/EventList';
+import ResultsTitle from '../../components/events/ResultsTitle';
+import Button from '../../components/ui/Button';
+import ErrorAlert from '../../components/ui/ErrorAlert';
+import MainLayout from '../../components/layout/MainLayout';
 
 export default function FilteredEventsPage() {
   const router = useRouter();
@@ -35,7 +35,7 @@ export default function FilteredEventsPage() {
   if (!loadedEvents) {
     return (
       <MainLayout>
-        <p className="center">Loading...</p>
+        <p className='center'>Loading...</p>
       </MainLayout>
     );
   }
@@ -57,11 +57,11 @@ export default function FilteredEventsPage() {
   ) {
     return (
       <MainLayout>
-        <div className="center">
+        <div className='center'>
           <ErrorAlert>
             <p>Invalid filter. Please adjust your values!</p>
           </ErrorAlert>
-          <Button link="/events">Show All Events</Button>
+          <Button link='/events'>Show All Events</Button>
         </div>
       </MainLayout>
     );
@@ -78,11 +78,11 @@ export default function FilteredEventsPage() {
   if (!filteredEvents || filteredEvents.length === 0) {
     return (
       <MainLayout>
-        <div className="center">
+        <div className='center'>
           <ErrorAlert>
             <p>No events found for the chosen filter!</p>
           </ErrorAlert>
-          <Button link="/events">Show All Events</Button>
+          <Button link='/events'>Show All Events</Button>
         </div>
       </MainLayout>
     );

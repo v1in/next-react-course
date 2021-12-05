@@ -1,5 +1,5 @@
-import Logo from "../../logo/logo";
-import { useRouter } from "next/router";
+import Logo from '../../logo/logo';
+import {useRouter} from 'next/router';
 
 export default function ClientProjectsPage() {
   const router = useRouter();
@@ -8,8 +8,8 @@ export default function ClientProjectsPage() {
   function loadProjectHandler() {
     // load data ...
     router.push({
-      pathname: "/clients/[id]/[clientprojectId]",
-      query: { id: "client1", clientprojectId: "project1" },
+      pathname: '/clients/[id]/[clientprojectId]',
+      query: {id: 'client1', clientprojectId: 'project1'},
     });
   }
 
