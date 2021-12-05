@@ -15,7 +15,7 @@ export default function FilteredEventsPage() {
 
   const filterData = router.query.slug;
 
-  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_EVENTS_API_URL}`);
+  const {data, error} = useSWR(`${process.env.NEXT_PUBLIC_EVENTS_API_URL}`);
 
   useEffect(() => {
     if (data) {
