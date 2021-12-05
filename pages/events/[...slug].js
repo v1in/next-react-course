@@ -15,9 +15,7 @@ export default function FilteredEventsPage() {
 
   const filterData = router.query.slug;
 
-  const {data, error} = useSWR(
-    'https://va-projects-e8ec7-default-rtdb.firebaseio.com/events.json',
-  );
+  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_EVENTS_API_URL}`);
 
   useEffect(() => {
     if (data) {
