@@ -1,4 +1,4 @@
-import {MongoClient} from 'mongodb';
+import {connectDatabase, insertDocument} from '../../helpers/db-util';
 
 async function handler(req, res) {
   if (req.method === 'POST') {
@@ -9,13 +9,11 @@ async function handler(req, res) {
       return;
     }
 
-    const client = await MongoClient.connect(
-      `mongodb+srv://${process.env.NEXT_PUBLIC_MONGO_DB_USERNAME}:${process.env.NEXT_PUBLIC_MONGO_DB_PASSWORD}@vldmrsandbox.kcf79.mongodb.net/events?retryWrites=true&w=majority`,
-    );
+    // connect db
+    const client = await connectDatabase();
 
-    const db = client.db();
-
-    await db.collection('newsletter').insertOne({email: userEmail});
+    // add newsletter to db
+    await insertDocument(client, 'newsletter', {email: userEmail});
 
     client.close();
 
