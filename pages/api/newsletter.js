@@ -9,13 +9,24 @@ async function handler(req, res) {
       return;
     }
 
+    let client;
+
     // connect db
-    const client = await connectDatabase();
+    try {
+      client = await connectDatabase();
+    } catch (error) {
+      res.status(500).json({message: 'Connection to the DB failed!'});
+      return;
+    }
 
     // add newsletter to db
-    await insertDocument(client, 'newsletter', {email: userEmail});
-
-    client.close();
+    try {
+      await insertDocument(client, 'newsletter', {email: userEmail});
+      client.close();
+    } catch (error) {
+      res.status(500).json({message: 'Inserting data failed!'});
+      return;
+    }
 
     res.status(201).json({message: 'Signed up!'});
   }

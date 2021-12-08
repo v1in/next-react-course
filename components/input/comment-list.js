@@ -3,6 +3,10 @@ import classes from './styles/comment-list.module.css';
 function CommentList(props) {
   const {items} = props;
 
+  if (!items) {
+    return <div>No comments</div>;
+  }
+
   return (
     <ol className={classes.comments}>
       {items.map((item) => (

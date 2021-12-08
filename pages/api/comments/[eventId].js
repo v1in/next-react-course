@@ -7,8 +7,15 @@ import {
 async function handler(req, res) {
   const eventId = req.query.eventId;
 
+  let client;
+
   // connect db
-  const client = await connectDatabase();
+  try {
+    client = await connectDatabase();
+  } catch (error) {
+    res.status(500).json({message: 'Connection to the DB failed!'});
+    return;
+  }
 
   if (req.method === 'POST') {
     const {email, name, text} = req.body;
@@ -20,6 +27,7 @@ async function handler(req, res) {
       !text.trim() === ''
     ) {
       res.status(422).json({message: 'Invalid input.'});
+      client.close();
       return;
     }
 
@@ -30,24 +38,33 @@ async function handler(req, res) {
       eventId,
     };
 
+    let result;
+
     // add new comment to db
-    const result = await insertDocument(client, 'comments', newComment);
+    try {
+      result = await insertDocument(client, 'comments', newComment);
 
-    newComment.id = result.insertedId;
+      newComment._id = result.insertedId;
 
-    res.status(201).json({message: 'Added comment.', comment: newComment});
+      res.status(201).json({message: 'Added comment.', comment: newComment});
+    } catch (error) {
+      res.status(500).json({message: 'Inserting comment failed!'});
+    }
   }
 
   if (req.method === 'GET') {
     // get all comments per eventId
-    const documents = await getAllDocuments(
-      client,
-      'comments',
-      {_id: -1},
-      {eventId: eventId},
-    );
-
-    res.status(200).json({comments: documents});
+    try {
+      const documents = await getAllDocuments(
+        client,
+        'comments',
+        {_id: -1},
+        {eventId: eventId},
+      );
+      res.status(200).json({comments: documents});
+    } catch (error) {
+      res.status(500).json({message: 'Getting comments failed.'});
+    }
   }
 
   client.close();
