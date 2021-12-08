@@ -1,11 +1,21 @@
-import {MongoClient} from 'mongodb';
+import {
+  connectDatabase,
+  insertDocument,
+  getAllDocuments,
+} from '../../../helpers/db-util';
 
 async function handler(req, res) {
   const eventId = req.query.eventId;
 
-  const client = await MongoClient.connect(
-    `mongodb+srv://${process.env.NEXT_PUBLIC_MONGO_DB_USERNAME}:${process.env.NEXT_PUBLIC_MONGO_DB_PASSWORD}@vldmrsandbox.kcf79.mongodb.net/events?retryWrites=true&w=majority`,
-  );
+  let client;
+
+  // connect db
+  try {
+    client = await connectDatabase();
+  } catch (error) {
+    res.status(500).json({message: 'Connection to the DB failed!'});
+    return;
+  }
 
   if (req.method === 'POST') {
     const {email, name, text} = req.body;
@@ -17,6 +27,7 @@ async function handler(req, res) {
       !text.trim() === ''
     ) {
       res.status(422).json({message: 'Invalid input.'});
+      client.close();
       return;
     }
 
@@ -27,20 +38,33 @@ async function handler(req, res) {
       eventId,
     };
 
-    const db = client.db();
+    let result;
 
-    await db.collection('comments').insertOne(newComment);
+    // add new comment to db
+    try {
+      result = await insertDocument(client, 'comments', newComment);
 
-    res.status(201).json({message: 'Added comment.', comment: newComment});
+      newComment._id = result.insertedId;
+
+      res.status(201).json({message: 'Added comment.', comment: newComment});
+    } catch (error) {
+      res.status(500).json({message: 'Inserting comment failed!'});
+    }
   }
 
   if (req.method === 'GET') {
-    const dummyList = [
-      {id: 'c1', name: 'Max', text: 'A first comment!'},
-      {id: 'c2', name: 'Alex', text: 'A second comment!'},
-      {id: 'c3', name: 'Tom', text: 'A third comment!'},
-    ];
-    res.status(200).json({comments: dummyList});
+    // get all comments per eventId
+    try {
+      const documents = await getAllDocuments(
+        client,
+        'comments',
+        {_id: -1},
+        {eventId: eventId},
+      );
+      res.status(200).json({comments: documents});
+    } catch (error) {
+      res.status(500).json({message: 'Getting comments failed.'});
+    }
   }
 
   client.close();

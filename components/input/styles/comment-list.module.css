@@ -20,5 +20,7 @@
 }
 
 .comments address {
-  display: inline;
+  font-weight: 700;
+  margin-top: 1rem;
+  display: inline-block;
 }
