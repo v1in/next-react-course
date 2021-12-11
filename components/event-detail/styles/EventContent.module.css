@@ -8,6 +8,10 @@
   text-align: center;
 }
 
+.content pre {
+  white-space: inherit;
+}
+
 @media (max-width: 420px) {
   .content {
     font-size: 1.1rem;
