@@ -44,7 +44,11 @@ export default function HomePage() {
       </section>
       <hr />
       <section>
-        <Link href='/events'>Events Page 🙌</Link>
+        <Link href='/events'>Events Page 📅</Link>
+      </section>
+      <hr />
+      <section>
+        <Link href='/auth'>Auth Project 🔐</Link>
       </section>
     </div>
   );

@@ -1,0 +1,14 @@
+.starting {
+  margin: 3rem auto;
+  text-align: center;
+}
+
+.starting h1 {
+  font-size: 2rem;
+}
+
+@media (min-width: 768px) {
+  .starting h1 {
+    font-size: 4rem;
+  }
+}
