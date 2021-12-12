@@ -2,7 +2,7 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   border-radius: 6px;
   background-color: #2b2b2b;
-  padding: 2rem;
+  padding: 1rem;
   max-width: 50rem;
   width: 80%;
   margin: -3rem auto;
@@ -19,7 +19,7 @@
   height: 10rem;
   border-radius: 50%;
   overflow: hidden;
-  border: 5px solid white;
+  border: 3px solid white;
 }
 
 .image img {
@@ -31,7 +31,7 @@
 .list {
   flex: 3;
   display: flex;
-  gap: 2rem;
+  gap: 1rem;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -45,20 +45,10 @@
 @media (min-width: 768px) {
   .logistics {
     padding: 2rem;
-    margin: -5rem auto;
+    margin: -3rem auto;
     gap: 3rem;
     flex-direction: row;
     align-items: stretch;
-  }
-
-  .image {
-    width: 20rem;
-    height: 20rem;
-  }
-
-  .image img {
-    width: 20rem;
-    height: 20rem;
   }
 
   .list {
@@ -70,5 +60,9 @@
   .image {
     width: 8rem;
     height: 8rem;
+  }
+
+  .logistics address {
+    text-align: left;
   }
 }

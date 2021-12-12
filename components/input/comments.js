@@ -1,4 +1,5 @@
-import {useState, useEffect} from 'react';
+import {useState, useContext, useEffect} from 'react';
+import NotificationContext from '../../store/notification-store';
 
 import CommentList from './comment-list';
 import NewComment from './new-comment';
@@ -6,6 +7,7 @@ import classes from './styles/comments.module.css';
 
 function Comments(props) {
   const {eventId} = props;
+  const notificationCtx = useContext(NotificationContext);
 
   const [showComments, setShowComments] = useState(false);
   const [comments, setComments] = useState([]);
@@ -25,6 +27,11 @@ function Comments(props) {
         })
         .catch((err) => {
           console.log('Error', err);
+          notificationCtx.showNotification({
+            title: 'Error!',
+            message: err.message || 'Something went wrong!',
+            status: 'error',
+          });
         })
         .finally(() => setLoading(false));
     }
@@ -34,7 +41,13 @@ function Comments(props) {
     setShowComments((prevStatus) => !prevStatus);
   }
 
-  function addCommentHandler(commentData) {
+  const addCommentHandler = (commentData) => {
+    notificationCtx.showNotification({
+      title: 'Sending comment...',
+      message: 'Your comment is correctly being stored into a database.',
+      status: 'pending',
+    });
+
     fetch(`/api/comments/${eventId}`, {
       method: 'POST',
       body: JSON.stringify(commentData),
@@ -42,9 +55,29 @@ function Comments(props) {
         'Content-Type': 'application/json',
       },
     })
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  }
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        return response.json().then((data) => {
+          throw new Error(data.message || 'Something went wrong!');
+        });
+      })
+      .then((data) => {
+        notificationCtx.showNotification({
+          title: 'Success!',
+          message: 'Your comment was saved!',
+          status: 'success',
+        });
+      })
+      .catch((error) => {
+        notificationCtx.showNotification({
+          title: 'Error!',
+          message: error.message || 'Something went wrong!',
+          status: 'error',
+        });
+      });
+  };
 
   return (
     <section className={classes.comments}>
