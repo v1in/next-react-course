@@ -1,0 +1,44 @@
+.notification {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  width: 50%;
+  min-width: 250px;
+  background-color: #1b1b1b;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.2);
+}
+
+.notification h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .notification {
+    min-width: auto;
+    width: calc(100% - 20px);
+  }
+  .notification h2 {
+    width: 100%;
+  }
+}
+
+.pending {
+  background-color: #177cbe;
+}
+
+.success {
+  background-color: #10be58;
+}
+
+.error {
+  background-color: #e65035;
+}
