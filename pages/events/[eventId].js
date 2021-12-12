@@ -5,6 +5,7 @@ import EventContent from '../../components/event-detail/EventContent';
 import ErrorAlert from '../../components/ui/ErrorAlert';
 import MainLayout from '../../components/layout/MainLayout';
 import Comments from '../../components/input/comments';
+import {NotificationContextProvider} from '../../store/notification-store';
 
 export default function EventDetailPage(props) {
   const event = props.selectedEvent;
@@ -20,19 +21,21 @@ export default function EventDetailPage(props) {
   }
 
   return (
-    <MainLayout>
-      <EventSummary title={event.title} />
-      <EventLogistics
-        date={event.date}
-        address={event.location}
-        image={event.image}
-        imageAlt={event.title}
-      />
-      <EventContent>
-        <p>{event.description}</p>
-      </EventContent>
-      <Comments eventId={event.id} />
-    </MainLayout>
+    <NotificationContextProvider>
+      <MainLayout>
+        <EventSummary title={event.title} />
+        <EventLogistics
+          date={event.date}
+          address={event.location}
+          image={event.image}
+          imageAlt={event.title}
+        />
+        <EventContent>
+          <p>{event.description}</p>
+        </EventContent>
+        <Comments eventId={event.id} />
+      </MainLayout>
+    </NotificationContextProvider>
   );
 }
 
