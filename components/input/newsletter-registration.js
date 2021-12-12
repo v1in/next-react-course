@@ -11,15 +11,15 @@ function NewsletterRegistration() {
 
     const enteredEmail = emailInputRef.current.value;
 
+    if (!enteredEmail) {
+      return;
+    }
+
     notificationCtx.showNotification({
       title: 'Signing up...',
       message: 'Registering for newsletter.',
       status: 'pending',
     });
-
-    if (!enteredEmail) {
-      return;
-    }
 
     fetch('/api/newsletter', {
       method: 'POST',
