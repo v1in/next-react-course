@@ -10,18 +10,18 @@
     "format": "prettier --write \"./**/*.{js,jsx}\""
   },
   "dependencies": {
-    "mongodb": "^4.2.1",
-    "next": "12.1.0",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "swr": "^1.1.0"
+    "mongodb": "^6.15.0",
+    "next": "15.2.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "swr": "^2.3.3"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^12.0.7",
-    "dotenv-flow": "^3.2.0",
-    "eslint": "8.4.0",
-    "eslint-config-next": "12.0.7",
-    "eslint-config-prettier": "^8.3.0",
-    "prettier": "^2.5.1"
+    "@next/eslint-plugin-next": "^15.2.4",
+    "dotenv-flow": "^4.1.0",
+    "eslint": "9.23.0",
+    "eslint-config-next": "15.2.4",
+    "eslint-config-prettier": "^10.1.1",
+    "prettier": "^3.5.3"
   }
 }
